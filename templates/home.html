@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="Users">
+<h2>Detalle del Usuario logueado</h2>
+
+</div>
+
+<section class="section">
+
+
+    <div class="table-wrapper">
+  
+           
+        <table class="fl-table"  id="myTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Username</th>
+                    <th>Update</th>
+                    
+                  
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in account %}
+                <tr>
+                    <td>{{account['id']}}</td>
+                    <td>{{account['nombre']}}</td>
+                    <td>{{account['username']}}</td>
+                    <td>
+                      
+                           
+                        <a href="/edit/{{account.id}}" class="btn btn-warning btn-xs">Actualizar</a>
+                    </td>
+                   
+                 </tr>
+
+               
+            
+                {% endfor %}
+            </tbody>
+        </table>
+  
+</div>
+  
+
+
+</section>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable( {
+            "dom": '<"pull-left"f><"pull-right"l>tip',
+            "buttons":[
+             'csv', 'excel'
+            ]
+            
+        } );
+    });
+    </script>
+{% endblock %}
